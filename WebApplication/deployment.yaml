@@ -1,0 +1,33 @@
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: dotnetdockerdemo-deployment
+spec:
+  selector:
+    matchLabels:
+      app: dotnetdocker
+  replicas: 3 # tells deployment to run 2 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: dotnetdocker
+    spec:
+      containers:
+      - name: dotnetdocker
+        image: adnansdocker/devops_1:1.#{Build.BuildId}# 
+        ports:
+        - containerPort: 80
+       
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: dotnetdockerdemo-service
+spec:
+  selector:
+    app: dotnetdocker
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+  type: LoadBalancer
