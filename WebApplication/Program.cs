@@ -47,20 +47,12 @@ namespace WebApplication
 			
 			app.UseMvc(routes =>
             {
-                routes.MapRoute("areas", "{area}/{controller=Home}/{action=Index}/{id?}");
                 routes.MapRoute("default", "{controller=Home}/{action=Index}/{id?}");
             });
 
             app.Run(async (context) =>
             {
-                context.Response.Headers.Add("Content-Type", "text/html");
-
-                await context.Response.WriteAsync(@"<html>
-                <body>
-                <h1>Razor Class Library sample with MVC structure (controllers and views)</h1>
-                <ul><li><a href=""/MyFeature"">Home</a></li><li><a href=""/MyFeature/About"">About (with attribute routing)</a></li></ul>
-                </body>
-                </html>");
+                context.Response.Headers.Add("Content-Type", "text/html");              
 			});
         }
     }
