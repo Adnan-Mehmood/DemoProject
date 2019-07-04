@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.FileProviders;
 
 namespace WebApplication
 {
@@ -54,6 +55,7 @@ namespace WebApplication
             {
                 context.Response.Headers.Add("Content-Type", "text/html");              
 			});
+
         }
     }
 }
